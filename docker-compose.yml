@@ -1,51 +1,6 @@
 version: "3"
 
 services:
-  front:
-    container_name: frontend
-    build: ./docker-images/front
-    ports:
-      - 8080:8080
-    environment:
-      - PORT=8080
-      - REACT_APP_PUBLIC_URL=http://localhost:8080
-      - REACT_APP_SERVER_URL=http://localhost:4443
-      - REACT_APP_RENDERER_URL=http://localhost:3000/render
-    networks:
-      - app
-
-  app:
-    container_name: backend
-    build: ./docker-images/app
-    volumes:
-      - ./:/var/www/app
-    ports:
-      - 4443:4443
-    environment:
-      - NODE_ENV=development
-      - PORT=4443
-      - REDIS=redis://cache
-      - DB=mongodb://mongo/searchx
-      - DEFAULT_SEARCH_PROVIDER=BING
-    networks:
-      - app
-
-  renderer:
-    image: zenato/puppeteer-renderer
-    container_name: renderer
-    ports:
-      - '3000:3000'
-    networks:
-      - app 
-
-  etherpad:
-    image: etherpad/etherpad
-    container_name: etherpad
-    ports:
-      - '9001:9001'
-    networks:
-      - app
-
   mongo:
     image: 'mongo:3.4.1'
     container_name: mongo
@@ -55,15 +10,27 @@ services:
       - 'mongo:/data/db'
     networks:
       - app
+  app:
+    container_name: macaw
+    build: ./docker-images/app
+    volumes:
+      - ./:/var/www/app
+    # ports:
+    #   - 4443:4443
+    # environment:
+    #   - NODE_ENV=development
+    #   - PORT=4443
+    #   - REDIS=redis://cache
+    #   - DB=mongodb://mongo/searchx
+    #   - DEFAULT_SEARCH_PROVIDER=BING
+    # networks:
+    #   - app
 
-  redis:
-    image: redis
-    container_name: cache
-    command: --protected-mode no
-    ports:
-      - '6379:6379'
-    networks:
-      - app
+
+
+
+
+
 
 volumes:
   mongo:
