@@ -24,7 +24,8 @@ First Time:
 4. This will retrieve the necessary images for Ubuntu, Python3, Indri, Pyndri, Stanford Core NLP and finally Macaw itself; and build the containers
 5. To start an interactive development environment (with the above mentioned packages installed) that shares a folder with your local (host): `docker run -it -v /host/path:/container/path macaw_docker_app`.
 
-`-it` enables the interactive environment `-v /host/path:/container/path` mounts the volume `/host/path` seen inside the image as `/container/path`
+`-it` enables the interactive environment `-v /host/path:/container/path` mounts the volume `/host/path` seen inside the image as `/container/path`.
+
 6. To close the application, press `Ctrl+A+D` on the terminal.
 
 The process to re-open the application with the stored data is very similar:
