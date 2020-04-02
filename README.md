@@ -1,6 +1,20 @@
 # Macaw on Docker
-This is a multi-container Docker application, [Docker Desktop](https://www.docker.com/products/docker-desktop) is required to run Macaw. 
+This is a multi-container Docker application, [Docker Desktop](https://www.docker.com/products/docker-desktop) is required to run [Macaw](https://github.com/microsoft/macaw). As of now, this application **does not** start Macaw. It installs all dependencies to run Macaw and creates and interactive environment where you can all scripts pertaining to Macaw.
 
+The application is built on the [docker image](https://hub.docker.com/r/roynirmal/pyndri) for [Pyndri](https://github.com/cvangysel/pyndri) which is a Python interface to the Indri search engine. 
+
+At the moment, this image contains:
+
+- Ubuntu 18.04 LTS
+- Python 3.6.9
+- Retrieval back-end systems:
+  * Indri 5.11
+  * Pyndri 0.4 
+- Java 11.0.6
+- Stanford Core NLP
+- Macaw
+
+The first three images are built in the container for Pyndri. We build the last three on top of that in this macaw docker application. 
 
 ## Instructions
 First Time:
