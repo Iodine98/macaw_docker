@@ -47,8 +47,9 @@ for i in range(len(docs)):
         finput.write('</DOC>\n')
     
 finput.close()
-```
+``` 
 So now the data is converted into the `input_file.txt` file.
+
 5. Index the data using `Indri`: `/indri-5.11/buildindex/IndriBuildIndex -corpus.path=./input_file.txt -corpus.class=trectext -index=/data/index`
 The `index` arguments specifies the path where you want to store the index. 
 6. Copy the python script to the required destination
