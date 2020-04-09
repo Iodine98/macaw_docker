@@ -5,7 +5,7 @@ The application is built on the [docker image](https://hub.docker.com/r/roynirma
 
 At the moment, this image contains:
 
-- Ubuntu 18.04 LTS
+- Ubuntu 16.04 LTS
 - Python 3.6.9
 - Retrieval back-end systems:
   * Indri 5.11
@@ -27,6 +27,27 @@ First Time:
    `-it` enables the interactive environment `-v /host/path:/container/path` mounts the volume `/host/path` seen inside the image as `/container/path`.
 
 6. To close the application, press `Ctrl+A+D` on the terminal.
+
+We will start off with running a bare-bone version of Macaw using the [WikiPassageQA](https://arxiv.org/pdf/1805.03797.pdf) dataset and `Indri` index. For that perform the following steps: 
+1. Get the dataset using the command `wget https://ciir.cs.umass.edu/downloads/wikipassageqa/WikiPassageQA.zip`. Ofcourse you can install any dataset you want here. We use WikiPassageQA because it is light weight and does the job ;)
+2. Unzip it `unzip WikiPassageQA.zip`. 
+3. ```python 
+docs = json.load(open('document_passages.json'))
+finput = open('input_file.txt', 'w+')
+
+for i in range(len(docs)):
+    for doc_id in docs[str(i)].keys():
+        finput.write('<DOC>\n')
+    
+        finput.write('<DOCNO>'+ str(i)+'-'+str(doc_id) +'</DOCNO>\n')
+        finput.write('<TEXT>\n')
+        finput.write(docs[str(i)][str(doc_id)]+'\n')
+        finput.write('</TEXT>\n')
+        finput.write('</DOC>\n')
+    
+finput.close()
+```
+
 
 The process to re-open the application with the stored data is very similar:
 1. Open a terminal and go to the folder location
