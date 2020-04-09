@@ -29,16 +29,17 @@ First Time:
 6. To close the application, press `Ctrl+A+D` on the terminal.
 
 We will start off with running a bare-bone version of Macaw using the [WikiPassageQA](https://arxiv.org/pdf/1805.03797.pdf) dataset and `Indri` index. For that perform the following steps: 
-1. Get the dataset using the command `wget https://ciir.cs.umass.edu/downloads/wikipassageqa/WikiPassageQA.zip`. Ofcourse you can install any dataset you want here. We use WikiPassageQA because it is light weight and does the job ;)
-2. Unzip it `unzip WikiPassageQA.zip`. 
-3. ```python 
-docs = json.load(open('document_passages.json'))
+1. Lets create a folder where we keep all data related stuff: `mkdir /data` and `cd /data`.
+2. Get the dataset using the command `wget https://ciir.cs.umass.edu/downloads/wikipassageqa/WikiPassageQA.zip`. Ofcourse you can install any dataset you want here. We use WikiPassageQA because it is light weight and does the job ;)
+3. Unzip it `unzip WikiPassageQA.zip`.
+4. Run the following script by launching a python3 interactive terminal to convert the data into [`trectext` format](https://sourceforge.net/p/lemur/wiki/Quick%20Start/) required by `Indri` to index the data:
+```python 
+docs = json.load(open('./WikiPassageQA/document_passages.json'))
 finput = open('input_file.txt', 'w+')
 
 for i in range(len(docs)):
     for doc_id in docs[str(i)].keys():
         finput.write('<DOC>\n')
-    
         finput.write('<DOCNO>'+ str(i)+'-'+str(doc_id) +'</DOCNO>\n')
         finput.write('<TEXT>\n')
         finput.write(docs[str(i)][str(doc_id)]+'\n')
@@ -47,6 +48,10 @@ for i in range(len(docs)):
     
 finput.close()
 ```
+So now the data is converted into the `input_file.txt` file.
+4. Index the data using `Indri`: `/indri-5.11/buildindex/IndriBuildIndex -corpus.path=./input_file.txt -corpus.class=trectext -index=/data/index`
+The `index` arguments specifies the path where you want to store the index. 
+
 
 
 The process to re-open the application with the stored data is very similar:
