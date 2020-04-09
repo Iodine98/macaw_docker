@@ -49,8 +49,14 @@ for i in range(len(docs)):
 finput.close()
 ```
 So now the data is converted into the `input_file.txt` file.
-4. Index the data using `Indri`: `/indri-5.11/buildindex/IndriBuildIndex -corpus.path=./input_file.txt -corpus.class=trectext -index=/data/index`
+5. Index the data using `Indri`: `/indri-5.11/buildindex/IndriBuildIndex -corpus.path=./input_file.txt -corpus.class=trectext -index=/data/index`
 The `index` arguments specifies the path where you want to store the index. 
+6. Copy the python script to the required destination
+7. Run `python3 live-main.py`
+This should open up:
+Now if you write a command it will retrieve: 
+
+**Note**: This is the bare-bone macaw which retrieve documents from the query we put in the standard input. To activate the voice search feature of Macaw we need the Telegram Token and update the `live-main.py` script as required. We can also use Bing instead of `Indri` for retrieval. 
 
 
 
