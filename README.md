@@ -34,3 +34,4 @@ The process to re-open the application with the stored data is very similar:
 3. Docker will start the pre-built containers
 4. You can open the application in the interactive environment with `docker run -it macaw_docker_app`
 5. To close the application, press `Ctrl+A+D` on the terminal
+# convert2trectext

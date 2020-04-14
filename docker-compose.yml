@@ -1,6 +1,21 @@
 version: "3"
 
 services:
+  app:
+    container_name: macaw
+    build: ./docker-images/app
+    volumes:
+      - ./shared:/macaw/new
+    # ports:
+    #   - 4443:4443
+    # environment:
+    #   - NODE_ENV=development
+    #   - PORT=4443
+    #   - REDIS=redis://cache
+    #   - DB=mongodb://mongo/searchx
+    #   - DEFAULT_SEARCH_PROVIDER=BING
+    networks:
+      - app
   mongo:
     image: 'mongo:3.4.1'
     container_name: mongo
@@ -10,21 +25,6 @@ services:
       - 'mongo:/data/db'
     networks:
       - app
-  app:
-    container_name: macaw
-    build: ./docker-images/app
-    volumes:
-      - ./:/var/www/app
-    # ports:
-    #   - 4443:4443
-    # environment:
-    #   - NODE_ENV=development
-    #   - PORT=4443
-    #   - REDIS=redis://cache
-    #   - DB=mongodb://mongo/searchx
-    #   - DEFAULT_SEARCH_PROVIDER=BING
-    # networks:
-    #   - app
 
 
 
