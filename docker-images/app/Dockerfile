@@ -23,6 +23,5 @@ RUN mkdir /data \
 
 RUN /indri-5.11/buildindex/IndriBuildIndex -corpus.path=/data/input_file.txt -corpus.class=trectext -index=/data/index -memory=500m 
 
-
   
   

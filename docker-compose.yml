@@ -16,15 +16,18 @@ services:
     #   - DEFAULT_SEARCH_PROVIDER=BING
     networks:
       - app
+    links:
+      - mongo:mongo
   mongo:
     image: 'mongo:3.4.1'
     container_name: mongo
     ports:
-      - '27017:27017'
+      - '0.0.0.0:27017:27017'
     volumes:
       - 'mongo:/data/db'
     networks:
       - app
+
 
 
 
