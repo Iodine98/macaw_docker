@@ -20,10 +20,13 @@ The first three images are built in the container for Pyndri. We build the last 
 First Time:
 1. Open your terminal and clone this repository: `git clone https://github.com/roynirmal/macaw_docker`. 
 2. Run `cd macaw_docker`.
-3. Run the following command: `docker-compose up -d` (don't close this terminal)
-4. This will retrieve the necessary images for Ubuntu, Python3, Indri, Pyndri, Stanford Core NLP and finally Macaw itself; and build the containers for mongo and macaw.
+3. Run `docker-compose build --no-cache`. This will retrieve the necessary images for Ubuntu, Python3, Indri, Pyndri, Stanford Core NLP and finally Macaw itself; and build the containers for mongo and macaw.
+4. Run the following command: `docker-compose up -d` (don't close this terminal)
+5. Get the `CONTAINER_ID` for `macaw_docker_app` by running `docker ps -a`. 
+6. Get into the interactive mode for executing macaw by running `docker-compose run app /bin/bash`. 
+7. Execute `python3 /macaw/macaw/live_main.py` to start the basic Macaw STDIO interface.
 
-5. To close the application, press `Ctrl+A+D` on the terminal.
+8. To close the application, press `Ctrl+A+D` on the terminal.
 
 In this docker image we start off with running a bare-bone version of Macaw using the [WikiPassageQA](https://arxiv.org/pdf/1805.03797.pdf) dataset and `Indri` index. For that perform the following steps: 
 1. Get the dataset from [here](https://ciir.cs.umass.edu/downloads/wikipassageqa/WikiPassageQA.zip). 
