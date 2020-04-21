@@ -28,7 +28,7 @@ First Time:
 
 8. To close the application, press `Ctrl+A+D` on the terminal.
 
-In this docker image we start off with running a bare-bone version of Macaw using the [WikiPassageQA](https://arxiv.org/pdf/1805.03797.pdf) dataset and `Indri` index. For that perform the following steps: 
+In this docker image we start off with running a bare-bone version of Macaw using the [WikiPassageQA](https://arxiv.org/pdf/1805.03797.pdf) dataset and `Indri` index. For that we perform the following steps (you do not need to repeat them again, this is already done while building the container during steps 1-8 previously): 
 1. Get the dataset from [here](https://ciir.cs.umass.edu/downloads/wikipassageqa/WikiPassageQA.zip). 
 2. Extarct it. 
 3. Convert the data into [`trectext` format](https://sourceforge.net/p/lemur/wiki/Quick%20Start/) required by `Indri` to index the data. For that we use our [script](https://github.com/roynirmal/convert2trectext.git). The script is a bit hacky for now but will update it soon ;)
