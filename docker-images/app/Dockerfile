@@ -7,11 +7,19 @@ RUN pip3 install setuptools \
   && rm "stanford-corenlp-full-2017-06-09.zip" 
   
 
-RUN git clone --branch docker-tutorial https://github.com/roynirmal/macaw.git \
+RUN git clone --branch docker-tutorial https://github.com/Iodine98/macaw.git \
   && cd macaw \
   && pip3 install -r requirements.txt \
   && python3 setup.py install \
   && cd ..
+  
+RUN git clone https://github.com/Iodine98/DrQA.git \
+  && cd DrQA \
+  && pip install -r requirements.txt \
+  && pip3 install torch \
+  && python3 setup.py develop \
+  && ./download.sh \
+  && cd .. 
 
 RUN mkdir /data \
   && cd /data \
@@ -22,6 +30,8 @@ RUN mkdir /data \
   && python3 converter.py 
 
 RUN /indri-5.11/buildindex/IndriBuildIndex -corpus.path=/data/input_file.txt -corpus.class=trectext -index=/data/index -memory=500m 
+
+  
 
   
   
