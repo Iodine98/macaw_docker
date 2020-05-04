@@ -18,7 +18,7 @@ The first three images are built in the container for Pyndri. We build the last 
 
 ## Instructions
 First Time:
-1. Open your terminal and clone this repository: `git clone https://github.com/roynirmal/macaw_docker`. 
+1. Open your terminal and clone this repository: `git clone https://github.com/Iodine98/macaw_docker`. 
 2. Run `cd macaw_docker`.
 3. Run `docker-compose build --no-cache`. This will retrieve the necessary images for Ubuntu, Python3, Indri, Pyndri, Stanford Core NLP and finally Macaw itself; and build the containers for mongo and macaw.
 4. Run the following command: `docker-compose up -d` (don't close this terminal)
